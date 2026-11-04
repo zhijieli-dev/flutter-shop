@@ -13,25 +13,25 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
 
-  final List<Map<String, String>> iconList  = [
+  final List<Map<String, String>> iconList = [
     {
-      'icon': 'assets/icon.webp',
-      'activeIcon': 'assets/icon.webp',
+      'icon': 'lib/assets/icon.webp',
+      'activeIcon': 'lib/assets/icon.webp',
       'title': 'Home'
     },
     {
-      'icon': 'assets/icon.webp',
-      'activeIcon': 'assets/icon.webp',
+      'icon': 'lib/assets/icon.webp',
+      'activeIcon': 'lib/assets/icon.webp',
       'title': 'Category'
     },
     {
-      'icon': 'assets/icon.webp',
-      'activeIcon': 'assets/icon.webp',
+      'icon': 'lib/assets/icon.webp',
+      'activeIcon': 'lib/assets/icon.webp',
       'title': 'Cart'
     },
     {
-      'icon': 'assets/icon.webp',
-      'activeIcon': 'assets/icon.webp',
+      'icon': 'lib/assets/icon.webp',
+      'activeIcon': 'lib/assets/icon.webp',
       'title': 'Mine'
     }
   ];
