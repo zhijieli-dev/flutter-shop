@@ -14,7 +14,6 @@ class _HmCategoryState extends State<HmCategory> {
       height: 100,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        physics: const ClampingScrollPhysics(),
         itemCount: 10,
         itemBuilder: (BuildContext context, int index) {
           return Container(
