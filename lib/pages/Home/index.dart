@@ -18,6 +18,7 @@ class _HomeViewState extends State<HomeView> {
 
   List<BannerItem> _bannerList = [];
   List<CatogoryItem> _categoryList = [];
+  List<SuggestionItem> _suggestionList = [];
 
   List<Widget> _getScrollChildren() {
     return [
@@ -30,7 +31,7 @@ class _HomeViewState extends State<HomeView> {
 
       SliverToBoxAdapter(child: SizedBox(height: 10)),
 
-      SliverToBoxAdapter(child: HmSuggestion()),
+      SliverToBoxAdapter(child: HmSuggestion(suggestionList: _suggestionList)),
 
       SliverToBoxAdapter(child: SizedBox(height: 10)),
 
@@ -60,25 +61,28 @@ class _HomeViewState extends State<HomeView> {
     super.initState();
     _getBannerList();
     _getCategoryList();
+    _getSuggestionList();
   }
 
   void _getBannerList() async {
-    try {
-      final result = await getBannerListAPI();
-      setState(() { _bannerList = result; });
-    } catch (e) {
-      debugPrint('Errore caricamento banner: $e');
-    }
+    final result = await getBannerListAPI();
+    setState(() { 
+      _bannerList = result; 
+    });
   }
 
   void _getCategoryList() async {
-    try {
-      final result = await getCategoryListAPI();
-      setState(() { _categoryList = result; });
-    } catch (e) {
-      debugPrint('Errore caricamento banner: $e');
-    }
+    final result = await getCategoryListAPI();
+    setState(() { 
+      _categoryList = result; 
+    });
+  }
 
+  void _getSuggestionList() async {
+    final result = await getSuggestionListAPI();
+    setState(() { 
+      _suggestionList = result;
+    });
   }
 
   @override
