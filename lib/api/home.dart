@@ -36,3 +36,31 @@ Future<List<SuggestionItem>> getSuggestionListAPI() async {
     return SuggestionItem.fromJson(item as Map<String, dynamic>);
   }).toList();
 }
+
+Future<HotItem> getExpensiveProductAPI() async {
+  final response = await dioRequest.get(HttpConstants.HOT_PRODUCT, 
+    params: {
+      'sortBy': 'price',
+      'order': 'desc',
+      'limit': 1
+    } 
+  );
+
+  final products  = response['products'] as List;
+
+  return HotItem.fromJson(products[0] as Map<String, dynamic>);
+}
+
+Future<HotItem> getCheaperProductAPI() async {
+  final response = await dioRequest.get(HttpConstants.HOT_PRODUCT, 
+    params: {
+      'sortBy': 'price',
+      'order': 'asc',
+      'limit': 1
+    } 
+  );
+
+  final item = response['products'] as List;
+  
+  return HotItem.fromJson(item[0] as Map<String, dynamic>);
+}

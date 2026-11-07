@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class BannerItem {
   final int id;
   final String imageUrl;
@@ -32,6 +34,20 @@ class SuggestionItem {
 
   factory SuggestionItem.fromJson(Map<String, dynamic> json){
     return SuggestionItem(id: json['id'], title: json['title'], price: json['price'], rating: json['rating'], imageUrl: json['thumbnail'], discountPercentage: json['discountPercentage']);
+  }
+
+}
+
+class HotItem {
+  final int id;
+  final String title; 
+  final double price;
+  final String imageUrl;
+
+  HotItem({required this.id, required this.title, required this.price, required this.imageUrl});
+
+  factory HotItem.fromJson(Map<String, dynamic> json) {
+    return HotItem(id: json['id'], title: json['title'], price: json['price'], imageUrl: json['thumbnail']);
   }
 
 }

@@ -4,6 +4,7 @@ import 'package:flutter_shop/components/Home/HmCategory.dart';
 import 'package:flutter_shop/components/Home/HmSuggestion.dart';
 import 'package:flutter_shop/components/Home/HmHot.dart';
 import 'package:flutter_shop/components/Home/HmMoreList.dart';
+import 'package:flutter_shop/utils/DioRequest.dart';
 import 'package:flutter_shop/viewmodel/home.dart';
 import 'package:flutter_shop/api/home.dart';
 
@@ -19,6 +20,8 @@ class _HomeViewState extends State<HomeView> {
   List<BannerItem> _bannerList = [];
   List<CatogoryItem> _categoryList = [];
   List<SuggestionItem> _suggestionList = [];
+  HotItem? _expensiveProduct;
+  HotItem? _cheaperProduct;
 
   List<Widget> _getScrollChildren() {
     return [
@@ -41,9 +44,9 @@ class _HomeViewState extends State<HomeView> {
           child: Flex(
             direction: Axis.horizontal,
             children: [
-              Expanded(child: HmHot()),
+              Expanded(child: HmHot(hotItem: _expensiveProduct, label: 'The most expensive Product')),
               SizedBox(width: 10),
-              Expanded(child: HmHot())
+              Expanded(child: HmHot(hotItem: _cheaperProduct, label: 'The cheapest Product',))
             ],
           )
         ),
@@ -62,6 +65,8 @@ class _HomeViewState extends State<HomeView> {
     _getBannerList();
     _getCategoryList();
     _getSuggestionList();
+    _getExpensiveProduct();
+    _getCheaperProduct();
   }
 
   void _getBannerList() async {
@@ -82,6 +87,20 @@ class _HomeViewState extends State<HomeView> {
     final result = await getSuggestionListAPI();
     setState(() { 
       _suggestionList = result;
+    });
+  }
+
+  void _getExpensiveProduct() async {
+    final result = await getExpensiveProductAPI();
+    setState(() {
+      _expensiveProduct = result;
+    });
+  }
+
+  void _getCheaperProduct() async {
+    final result = await getCheaperProductAPI();
+    setState(() {
+      _cheaperProduct = result;
     });
   }
 
